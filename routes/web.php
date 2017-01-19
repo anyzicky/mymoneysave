@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Waste;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,5 +14,13 @@
 */
 
 $app->get('/', function () use ($app) {
-    return $app->version();
+
+    $wastes = Waste::query()->get()->all();
+
+    if(empty($wastes)) {
+        throw new \Illuminate\Database\Eloquent\ModelNotFoundException();
+    }
+
+    return view('wastes', ['wastes' => $wastes]);
+
 });
