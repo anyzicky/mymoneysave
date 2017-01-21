@@ -47,22 +47,22 @@
 
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.html">
+                    <a href="/">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
 
                 <li>
-                    <a href="user.html">
+                    <a href="/user">
                         <i class="pe-7s-user"></i>
                         <p>User Profile</p>
                     </a>
                 </li>
                 <li>
-                    <a href="table.html">
+                    <a href="/stat">
                         <i class="pe-7s-note2"></i>
-                        <p>Table List</p>
+                        <p>Statistic</p>
                     </a>
                 </li>
                 <li>

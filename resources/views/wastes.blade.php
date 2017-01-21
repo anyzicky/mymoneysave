@@ -68,7 +68,11 @@
                     <tbody>
                     @foreach($wastes as $waste)
                         <tr>
-                            <td>{{ $waste->id }}</td>
+                            <td>
+                                <a href="{{ url('/stat', ['id' => $waste->id]) }}">
+                                    {{ $waste->id }}
+                                </a>
+                            </td>
                             <td>{{ $waste->name }}</td>
                             <td>{{ $waste->price }} руб.</td>
                             <td>{{ $waste->date_buy }}</td>

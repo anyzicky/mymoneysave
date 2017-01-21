@@ -13,14 +13,8 @@ use App\Models\Waste;
 |
 */
 
-$app->get('/', function () use ($app) {
+$app->get('/', 'StatisticController@index');
 
-    $wastes = Waste::query()->get()->all();
-
-    if(empty($wastes)) {
-        throw new \Illuminate\Database\Eloquent\ModelNotFoundException();
-    }
-
-    return view('wastes', ['wastes' => $wastes]);
-
-});
+$app->get('/stat', 'StatisticController@index');
+$app->get('stat/{id}', 'StatisticController@show');
+$app->get('stat/{year}/{month}', 'StatisticController@date');
