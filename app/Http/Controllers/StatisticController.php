@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Psr\Log;
 use App\Models\Waste;
+use Illuminate\Http\Request;
 
 class StatisticController extends Controller
 {
@@ -31,5 +33,26 @@ class StatisticController extends Controller
                         ->get();
         
         return view('wastes', ['wastes' => $wastes]);
+    }
+
+    public function create()
+    {
+        return view('create', ['add' => false]);
+    }
+    
+    public function save(Request $request)
+    {
+        $add = false;
+
+        $waste = new Waste();
+        $waste->name = $request->get('name');
+        $waste->price = $request->get('price');
+        $waste->date_buy = $request->get('date_buy');
+        $saved = $waste->save();
+
+        if($saved) {
+            $add = true;
+        }
+        return view('create', ['add' => $add]);
     }
 }
