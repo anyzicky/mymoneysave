@@ -45,6 +45,8 @@
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
     <script src="{{ URL::asset('assets/js/light-bootstrap-dashboard.js') }}"></script>
 
+    <script src="{{ URL::asset('assets/js/bootstrap-select.js') }}"></script>
+
     <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
     <script src="{{ URL::asset('assets/js/demo.js') }}"></script>
 
@@ -226,6 +228,10 @@
 
         demo.initChartist();
 
+        $('.selectpicker').selectpicker({
+            style: 'btn-info',
+            size: 4
+        });
 
 
     });

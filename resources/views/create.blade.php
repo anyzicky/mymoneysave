@@ -35,6 +35,19 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <select class="selectpicker" name="category">
+                                <option value="0">choose</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
                     <button type="submit" class="btn btn-info btn-fill pull-right">Add</button>
                     <div class="clearfix"></div>
                 </form>
