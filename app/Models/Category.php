@@ -10,9 +10,9 @@ final class Category extends Model
      * Get category associated with waste
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function waste()
+    public function wastes()
     {
-        return $this->hasMany('App\Models\Waste', 'category_id');
+        return $this->hasMany('App\Models\Waste');
     }
 
 }

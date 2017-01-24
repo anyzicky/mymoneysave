@@ -11,12 +11,12 @@ class StatisticController extends Controller
 {
     public function index()
     {
-        $wastes = Waste::with('categories')->get();
+        $wastes = Waste::all();
 
         if(empty($wastes)) {
             throw new \Illuminate\Database\Eloquent\ModelNotFoundException();
         }
-
+        //dd($wastes);
         return view('wastes', ['wastes' => $wastes]);
     }
 
@@ -47,8 +47,6 @@ class StatisticController extends Controller
         $add = false;
 
         $categories = Category::query()->get()->all();
-
-        $category = Category::find($request->get('category'));
 
         $waste = new Waste();
         $waste->name = $request->get('name');

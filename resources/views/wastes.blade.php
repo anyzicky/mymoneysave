@@ -77,7 +77,7 @@
                             <td>{{ $waste->name }}</td>
                             <td>{{ $waste->price }} руб.</td>
                             <td>{{ $waste->date_buy }}</td>
-                            <td>{{ $waste->category_id }}</td>
+                            <td>{{ $waste->categories->name }}</td>
                         </tr>
                     @endforeach
                     </tbody>
