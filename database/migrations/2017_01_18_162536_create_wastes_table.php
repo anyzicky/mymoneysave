@@ -20,6 +20,8 @@ class CreateWastesTable extends Migration
             $table->string('name');
             $table->float('price');
             $table->date('date_buy');
+            $table->integer('category_id')->unsigned();
+            //$table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

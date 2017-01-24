@@ -11,7 +11,7 @@ class StatisticController extends Controller
 {
     public function index()
     {
-        $wastes = Waste::query()->get()->all();
+        $wastes = Waste::with('categories')->get();
 
         if(empty($wastes)) {
             throw new \Illuminate\Database\Eloquent\ModelNotFoundException();
@@ -54,7 +54,7 @@ class StatisticController extends Controller
         $waste->name = $request->get('name');
         $waste->price = $request->get('price');
         $waste->date_buy = $request->get('date_buy');
-        $waste->category()->save($category);
+        $waste->category_id = $request->get('category');
         $saved = $waste->save();
 
         if($saved) {

@@ -6,12 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 final class Waste extends Model
 {
-    /**
-     * Get category associated with waste
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function category()
+    protected $table = 'wastes';
+
+    public function categories()
     {
-        return $this->hasOne('App\Models\Category', 'waste_id', 'id');
+        return $this->belongsTo('App\Models\Category');
     }
 }

@@ -64,6 +64,7 @@
                     <th>Name</th>
                     <th>Salary</th>
                     <th>Date</th>
+                    <th>Category</th>
                     </thead>
                     <tbody>
                     @foreach($wastes as $waste)
@@ -76,6 +77,7 @@
                             <td>{{ $waste->name }}</td>
                             <td>{{ $waste->price }} руб.</td>
                             <td>{{ $waste->date_buy }}</td>
+                            <td>{{ $waste->category_id }}</td>
                         </tr>
                     @endforeach
                     </tbody>
