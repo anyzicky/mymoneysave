@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Waste;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------

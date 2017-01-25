@@ -71,13 +71,13 @@
             </div>
 
             <ul class="nav">
-                <li class="active">
+                <li>
                     <a href="/stat/create">
                         <i class="pe-7s-file"></i>
                         <p>Add new</p>
                     </a>
                 </li>
-                <li class="active">
+                <li >
                     <a href="/">
                         <i class="pe-7s-graph"></i>
                         <p>Dashboard</p>
