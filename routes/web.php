@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 
 $app->get('/', 'StatisticController@index');
 
-$app->get('/stat', 'StatisticController@index');
+$app->get('/stat', 'StatisticController@statistic');
 $app->get('stat/{id}', 'StatisticController@show');
 $app->get('stat/{year}/{month}', 'StatisticController@date');
 $app->get('/stat/create', 'StatisticController@create');

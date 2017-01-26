@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'Statistic')
+@section('title', 'Dashboard')
 
 @section('content')
+
+    @include('blocks.chart')
+
+    @include('blocks.graph')
 
     <div class="col-md-12">
         <div class="card">
@@ -39,5 +43,4 @@
             </div>
         </div>
     </div>
-    {{ $wastes->links() }}
 @endsection

@@ -11,7 +11,18 @@ class StatisticController extends Controller
 {
     public function index()
     {
-        $wastes = Waste::all();
+        $wastes = Waste::query()->paginate(10);
+
+        if(empty($wastes)) {
+            throw new \Illuminate\Database\Eloquent\ModelNotFoundException();
+        }
+        //dd($wastes);
+        return view('dash', ['wastes' => $wastes]);
+    }
+
+    public function statistic()
+    {
+        $wastes = Waste::query()->paginate(20);;
 
         if(empty($wastes)) {
             throw new \Illuminate\Database\Eloquent\ModelNotFoundException();
