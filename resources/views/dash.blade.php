@@ -38,6 +38,15 @@
                         </tr>
                     @endforeach
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="2">Итого</td>
+                            <td>{{ $sum }} руб.</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
                 </table>
 
             </div>

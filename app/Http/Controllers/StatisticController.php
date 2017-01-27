@@ -11,13 +11,14 @@ class StatisticController extends Controller
 {
     public function index()
     {
-        $wastes = Waste::query()->orderBy('id', 'desc')->paginate(10);
+        $sumWastes = Waste::query()->take(5)->sum('price');
+        $wastes = Waste::query()->orderBy('id', 'desc')->take(5)->get();
 
         if(empty($wastes)) {
             throw new \Illuminate\Database\Eloquent\ModelNotFoundException();
         }
         //dd($wastes);
-        return view('dash', ['wastes' => $wastes]);
+        return view('dash', ['wastes' => $wastes, 'sum' => $sumWastes]);
     }
 
     public function statistic()
