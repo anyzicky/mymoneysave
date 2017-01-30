@@ -7,6 +7,7 @@ class CategoryTableSeeder extends Seeder
 {
     public function run()
     {
+        DB::table('categories')->delete();
         Category::create([
             'name' => 'Home'
         ]);

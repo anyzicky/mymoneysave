@@ -7,6 +7,7 @@ class WasteTableSeeder extends Seeder
 {
     public function run()
     {
+        DB::table('wastes')->delete();
         Waste::create([
             'name' => 'Rocket league PS4',
             'price' => '1079',
