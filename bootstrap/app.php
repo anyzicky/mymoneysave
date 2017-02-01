@@ -59,12 +59,14 @@ $app->singleton(
 |
 */
 
-// $app->middleware([
-//    App\Http\Middleware\ExampleMiddleware::class
-// ]);
+
+/*$app->middleware([
+    Illuminate\Session\Middleware\StartSession::class
+]);*/
 
 $app->routeMiddleware([
      'auth' => App\Http\Middleware\Authenticate::class,
+     'BasicAuth' => App\Http\Middleware\BasicAuthMiddleware::class,
 ]);
 
 
@@ -80,7 +82,8 @@ $app->routeMiddleware([
 */
 
 $app->register(App\Providers\AppServiceProvider::class);
- $app->register(App\Providers\AuthServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
+
 // $app->register(App\Providers\EventServiceProvider::class);
 //$this->app->register(\Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 

@@ -14,13 +14,11 @@ use Illuminate\Http\Request;
 |
 */
 
-$app->get('/login', 'LoginController@showLogin');
-$app->post('/login', 'LoginController@doLogin');
-
-$app->get('/', 'StatisticController@index');
-$app->get('/stat', 'StatisticController@statistic');
-$app->get('stat/{id}', 'StatisticController@show');
-$app->get('stat/{year}/{month}', 'StatisticController@date');
-$app->get('/stat/create', 'StatisticController@create');
-$app->post('/stat/create', 'StatisticController@save');
-
+$app->group(['middleware' => 'BasicAuth'], function () use ($app) {
+    $app->get('/', 'StatisticController@index');
+    $app->get('/stat', 'StatisticController@statistic');
+    $app->get('stat/{id}', 'StatisticController@show');
+    $app->get('stat/{year}/{month}', 'StatisticController@date');
+    $app->get('/stat/create', 'StatisticController@create');
+    $app->post('/stat/create', 'StatisticController@save');
+});

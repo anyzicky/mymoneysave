@@ -179,7 +179,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ URL::to('logout') }}">
                                 Log out
                             </a>
                         </li>

@@ -6,11 +6,15 @@ use App\Models\Category;
 use Psr\Log;
 use App\Models\Waste;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\JWTAuth;
 
 class StatisticController extends Controller
 {
+
     public function index()
     {
+
         $sumWastes = Waste::query()->take(5)->sum('price');
         $wastes = Waste::query()->orderBy('id', 'desc')->take(5)->get();
 

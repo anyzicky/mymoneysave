@@ -9,6 +9,7 @@ use Psr\Log;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\JWTAuth;
 
+
 class LoginController extends Controller
 {
     protected $jwt;
@@ -20,43 +21,30 @@ class LoginController extends Controller
 
     public function doLogin(Request $request)
     {
+        $this->validate($request, [
+            'email'    => 'required|email|max:255',
+            'password' => 'required',
+        ]);
 
-        $userdata = array(
-            'email'     => $request->get('email'),
-            'password'  => $request->get('password')
-        );
+        $credentials = $request->only('email', 'password');
 
-        /*if($this->jwt->attempt($request->only('email', 'password'))) {
-            echo 'SUCCESS!';
+        if(Auth::attempt($credentials, $request->has('remember'))) {
+            //dd(Auth::user());
+            return redirect('/');
         } else {
-            //dd($userdata);
-            return redirect()->route('login');
-        }*/
-        try {
-
-            if (! $token = $this->jwt->attempt($request->only('email', 'password'))) {
-                return response()->json(['user_not_found'], 404);
-            }
-
-        } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
-
-            return response()->json(['token_expired'], 500);
-
-        } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
-
-            return response()->json(['token_invalid'], 500);
-
-        } catch (\Tymon\JWTAuth\Exceptions\JWTException $e) {
-
-            return response()->json(['token_absent' => $e->getMessage()], 500);
-
+            //dd($request);
+            return redirect('/login');
         }
-
-        return response()->json(compact('token'));
     }
 
     public function showLogin()
     {
         return view('authform');
+    }
+    
+    public function doLogout()
+    {
+        Auth::logout();
+        return Redirect::to('login');
     }
 }
