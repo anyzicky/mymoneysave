@@ -1,24 +1,29 @@
 <?php
-
 use App\Models\Waste;
 use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
-| It is a breeze. Simply tell Lumen the URIs it should respond to
-| and give it the Closure to call when that URI is requested.
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/logout', function() {
+    Auth::logout();
 
-$app->group(['middleware' => 'BasicAuth'], function () use ($app) {
-    $app->get('/', 'StatisticController@index');
-    $app->get('/stat', 'StatisticController@statistic');
-    $app->get('stat/{id}', 'StatisticController@show');
-    $app->get('stat/{year}/{month}', 'StatisticController@date');
-    $app->get('/stat/create', 'StatisticController@create');
-    $app->post('/stat/create', 'StatisticController@save');
+    return redirect('/login');
 });
+
+Route::get('/', 'StatisticController@index');
+Route::get('/stat', 'StatisticController@statistic');
+Route::get('stat/{id}', 'StatisticController@show');
+Route::get('stat/{year}/{month}', 'StatisticController@date');
+Route::get('/stat/create', 'StatisticController@create');
+Route::post('/stat/create', 'StatisticController@save');
+
+
+Auth::routes();
+

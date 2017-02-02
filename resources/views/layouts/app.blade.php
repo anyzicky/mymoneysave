@@ -7,6 +7,9 @@
 
     <title>@yield('title')</title>
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
@@ -50,6 +53,12 @@
     <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
     <script src="{{ URL::asset('assets/js/demo.js') }}"></script>
 
+    <!-- Scripts -->
+    <script>
+        window.Laravel = {!! json_encode([
+            'csrfToken' => csrf_token(),
+        ]) !!};
+    </script>
 </head>
 <body>
 
@@ -178,11 +187,13 @@
                                 Account
                             </a>
                         </li>
-                        <li>
-                            <a href="{{ URL::to('logout') }}">
-                                Log out
-                            </a>
-                        </li>
+                        @if(Auth::check())
+                            <li>
+                                <a href="{{ URL::to('/logout') }}">
+                                    Log out
+                                </a>
+                            </li>
+                        @endif
 
                     </ul>
                 </div>

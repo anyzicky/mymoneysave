@@ -7,10 +7,19 @@ use Psr\Log;
 use App\Models\Waste;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Tymon\JWTAuth\JWTAuth;
 
 class StatisticController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
