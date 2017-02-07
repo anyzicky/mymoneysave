@@ -20,6 +20,7 @@ Route::get('/logout', function() {
 Route::get('/', 'StatisticController@index');
 Route::get('/stat', 'StatisticController@statistic');
 Route::get('stat/{id}', 'StatisticController@show');
+Route::get('stat/delete/{id}', 'StatisticController@delete');
 Route::get('stat/{year}/{month}', 'StatisticController@date');
 Route::get('/stat/create', 'StatisticController@create');
 Route::post('/stat/create', 'StatisticController@save');

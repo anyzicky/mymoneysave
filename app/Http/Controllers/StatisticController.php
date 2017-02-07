@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\Redirect;
 use Psr\Log;
 use App\Models\Waste;
 use Illuminate\Http\Request;
@@ -50,6 +51,14 @@ class StatisticController extends Controller
         $waste = Waste::findOrFail($id);
 
         return view('waste', ['waste' => $waste]);
+    }
+
+    public function delete($id)
+    {
+        $waste = Waste::findOrFail($id);
+        $waste->delete();
+
+        return redirect('/');
     }
 
     public function date($year, $month)
